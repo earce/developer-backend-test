@@ -1,0 +1,6 @@
+{
+  "coin_1" : {
+    "creatorTransaction" : "tx_1",
+    "spenderTransaction" : "tx_2"
+  }
+}
