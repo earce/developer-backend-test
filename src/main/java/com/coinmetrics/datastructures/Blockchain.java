@@ -19,6 +19,22 @@ public class Blockchain {
         return blocks;
     }
 
+    /**
+     * Method is given a path where three files are expected to be:
+     *      blocks.json
+     *      coins.json
+     *      transactions.json
+     *
+     * Based on PDF several fields are circular references to other fields, e.g.
+     * Transaction -> Block and Block -> Transaction. In order to properly build
+     * these objects we first build the objects without their circular references
+     * and then stitch them together based on the unique id provided in the json
+     * files.
+     *
+     * There was some liberty here in deciding how to represent the data as flat
+     * files and how to stitch them together.
+     *
+     */
     public static Blockchain load(final String path) throws IOException {
         final ObjectMapper mapper = new ObjectMapper();
 

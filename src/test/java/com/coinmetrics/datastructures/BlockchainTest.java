@@ -49,6 +49,8 @@ public class BlockchainTest {
         assertAll(Blockchain.load(new File("").getAbsolutePath() + "/src/test/resources/sample1"));
         assertAll(Blockchain.load(new File("").getAbsolutePath() + "/src/test/resources/sample2"));
         assertAll(Blockchain.load(new File("").getAbsolutePath() + "/src/test/resources/sample3"));
+        assertAll(Blockchain.load(new File("").getAbsolutePath() + "/src/test/resources/sample4"));
+        assertAll(Blockchain.load(new File("").getAbsolutePath() + "/src/test/resources/sample5"));
 
     }
 

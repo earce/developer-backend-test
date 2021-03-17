@@ -99,6 +99,32 @@ public class BlockchainProcessorTest {
         Assert.assertEquals(c5Ancestors.get(0).getAddress(), "Erick4");
     }
 
+    @Test
+    public void sample5CoinbaseAncestors() throws IOException {
+
+        final Blockchain b = Blockchain.load(
+                new File("").getAbsolutePath() + "/src/test/resources/sample5");
+
+        final Coin c1 = b.getBlocks().get(0).getTransactions().get(1).getOutputs().get(0);
+        final Coin c4 = b.getBlocks().get(1).getTransactions().get(1).getOutputs().get(0);
+        final Coin c5 = b.getBlocks().get(1).getTransactions().get(1).getOutputs().get(1);
+
+        final List<Coin> c1Ancestors = BlockchainProcessor.findCoinbaseAncestors(c1);
+        final List<Coin> c4Ancestors = BlockchainProcessor.findCoinbaseAncestors(c4);
+        final List<Coin> c5Ancestors = BlockchainProcessor.findCoinbaseAncestors(c5);
+
+        Assert.assertEquals(c1Ancestors.size(), 1);
+        Assert.assertEquals(c1Ancestors.get(0).getAddress(), "Erick0");
+
+        Assert.assertEquals(c4Ancestors.size(), 2);
+        Assert.assertEquals(c4Ancestors.get(0).getAddress(), "Erick3");
+        Assert.assertEquals(c4Ancestors.get(1).getAddress(), "Erick0");
+
+        Assert.assertEquals(c5Ancestors.size(), 2);
+        Assert.assertEquals(c5Ancestors.get(0).getAddress(), "Erick3");
+        Assert.assertEquals(c5Ancestors.get(1).getAddress(), "Erick0");
+    }
+
     private long getEpochSecond(final String dt) {
         DateFormat df = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
