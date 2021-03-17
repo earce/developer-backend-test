@@ -44,13 +44,13 @@ public class BlockchainProcessor {
 
         while (!queue.isEmpty()) {
             final Coin c = queue.poll();
-            ancestors.add(c);
-            if (!c.getCreatorTransaction().isCoinbase()) {
+            if (c.getCreatorTransaction().isCoinbase()) {
+                ancestors.add(c);
+            } else {
                 queue.addAll(c.getCreatorTransaction().getInputs());
             }
         }
 
-        ancestors.remove(0); // remove starting coin
         return ancestors;
     }
 }

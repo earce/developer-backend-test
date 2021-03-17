@@ -39,13 +39,18 @@ public class BlockchainProcessorTest {
         final Blockchain b = Blockchain.load(
                 new File("").getAbsolutePath() + "/src/test/resources/sample1");
 
+        final Coin c3 = b.getBlocks().get(0).getTransactions().get(1).getOutputs().get(0);
         final Coin c4 = b.getBlocks().get(0).getTransactions().get(2).getOutputs().get(0);
 
+        final List<Coin> c3Ancestors = BlockchainProcessor.findCoinbaseAncestors(c3);
         final List<Coin> c4Ancestors = BlockchainProcessor.findCoinbaseAncestors(c4);
 
+        Assert.assertEquals(c3Ancestors.size(), 1);
+        Assert.assertEquals(c3Ancestors.get(0).getAddress(), "Erick1");
+
+        Assert.assertEquals(c4Ancestors.size(), 2);
         Assert.assertEquals(c4Ancestors.get(0).getAddress(), "Erick0");
-        Assert.assertEquals(c4Ancestors.get(1).getAddress(), "Erick2");
-        Assert.assertEquals(c4Ancestors.get(2).getAddress(), "Erick1");
+        Assert.assertEquals(c4Ancestors.get(1).getAddress(), "Erick1");
     }
 
     @Test
@@ -78,6 +83,20 @@ public class BlockchainProcessorTest {
         final String address2 = BlockchainProcessor.findMaximumInboundVolumeAddress(b,
                 getEpochSecond("2021-01-01 00:00:00"), getEpochSecond("2021-01-01 00:00:03"));
         Assert.assertEquals(address2, "Erick0");
+    }
+
+    @Test
+    public void sample4CoinbaseAncestors() throws IOException {
+
+        final Blockchain b = Blockchain.load(
+                new File("").getAbsolutePath() + "/src/test/resources/sample4");
+
+        final Coin c5 = b.getBlocks().get(1).getTransactions().get(1).getOutputs().get(0);
+
+        final List<Coin> c5Ancestors = BlockchainProcessor.findCoinbaseAncestors(c5);
+
+        Assert.assertEquals(c5Ancestors.size(), 1);
+        Assert.assertEquals(c5Ancestors.get(0).getAddress(), "Erick4");
     }
 
     private long getEpochSecond(final String dt) {
