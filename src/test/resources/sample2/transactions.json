@@ -1,0 +1,44 @@
+{
+  "t0" : {
+    "block" : "0",
+    "isCoinbase" : true,
+    "inputs" : [],
+    "outputs" : [
+      "c0"
+    ]
+  },
+  "t1" : {
+    "block" : "1",
+    "isCoinbase" : false,
+    "inputs" : [
+      "c0"
+    ],
+    "outputs" : [
+      "c1",
+      "c2"
+    ]
+  },
+  "t2" : {
+    "block" : "2",
+    "isCoinbase" : false,
+    "inputs" : [
+      "c1",
+      "c2"
+    ],
+    "outputs" : [
+      "c3",
+      "c4"
+    ]
+  },
+  "t3" : {
+    "block" : "3",
+    "isCoinbase" : false,
+    "inputs" : [
+      "c3",
+      "c4"
+    ],
+    "outputs" : [
+      "c5"
+    ]
+  }
+}

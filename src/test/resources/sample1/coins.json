@@ -1,0 +1,32 @@
+{
+  "c0" : {
+    "creatorTransaction" : "t0",
+    "spenderTransaction" : "t2",
+    "address" : "Erick0",
+    "amount" : 100
+  },
+  "c1" : {
+    "creatorTransaction" : "t0",
+    "spenderTransaction" : "t1",
+    "address" : "Erick1",
+    "amount" : 110
+  },
+  "c2" : {
+    "creatorTransaction" : "t1",
+    "spenderTransaction" : "t2",
+    "address" : "Erick2",
+    "amount" : 50
+  },
+  "c3" : {
+    "creatorTransaction" : "t1",
+    "spenderTransaction" : "",
+    "address" : "Erick3",
+    "amount" : 60
+  },
+  "c4" : {
+    "creatorTransaction" : "t2",
+    "spenderTransaction" : "",
+    "address" : "Erick4",
+    "amount" : 150
+  }
+}
