@@ -2,6 +2,13 @@
 
 The two functions defined in the test are implemented in [BlockchainProcessor.java](https://github.com/earce/developer-backend-test/blob/main/src/main/java/com/coinmetrics/BlockchainProcessor.java)
 
+## SQL
+
+[C)](https://github.com/earce/developer-backend-test/blob/main/src/main/resources/max_even_balance_address.sql)  Write a query that will return the address with maximum even balance
+
+
+[D)](https://github.com/earce/developer-backend-test/blob/main/src/main/resources/top_10_blocks.sql) Write a query that will return top 10 blocks ordered by total volume of spent coins
+
 ## Testing
 
 Code Coverage (Instructions) <kbd>~98%</kbd> 
