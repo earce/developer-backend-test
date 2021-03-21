@@ -67,6 +67,10 @@ public class BlockchainProcessorTest {
         final String address2 = BlockchainProcessor.findMaximumInboundVolumeAddress(b,
                 getEpochSecond("2021-01-01 00:00:13"), getEpochSecond("2021-01-01 00:00:15"));
         Assert.assertEquals(address2, "Erick5");
+
+        final Coin c5 = b.getBlocks().get(3).getTransactions().get(0).getOutputs().get(0);
+        final List<Coin> c5Ancestors = BlockchainProcessor.findCoinbaseAncestors(c5);
+        Assert.assertEquals(c5Ancestors.size(), 1);
     }
 
     @Test
