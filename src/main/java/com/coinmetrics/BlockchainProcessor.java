@@ -63,16 +63,22 @@ public class BlockchainProcessor {
      * @return list of all traversable coins where parent is Coinbase transaction
      */
     public static List<Coin> findCoinbaseAncestors(final Coin coin) {
+        final List<Transaction> visited = new ArrayList<>();
+
         final List<Coin> ancestors = new ArrayList<>();
         final Queue<Coin> queue = new LinkedList<>();
         queue.add(coin);
 
         while (!queue.isEmpty()) {
             final Coin c = queue.poll();
+
             if (c.getCreatorTransaction().isCoinbase()) {
                 ancestors.add(c);
             } else {
-                queue.addAll(c.getCreatorTransaction().getInputs());
+                if (visited.stream().noneMatch(t -> t == c.getCreatorTransaction())) {
+                    visited.add(c.getCreatorTransaction());
+                    queue.addAll(c.getCreatorTransaction().getInputs());
+                }
             }
         }
 
